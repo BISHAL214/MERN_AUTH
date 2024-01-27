@@ -17,13 +17,13 @@ const app = express()
 
 app.use(express.json())
 
-const port = process.env.PORT
+const port = process.env.PORTs
 
 app.listen(port, ()=> {
     console.log(`server running on port ${port}`)
 })
 
-app.use("/backend/user", userRoutes);
+app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 
 app.use((err, req, res, next) => {
@@ -32,7 +32,7 @@ app.use((err, req, res, next) => {
 
     return res.status(statusCode).json({ 
         success: false,
-        message: message,
-        statusCode: statusCode,
+        message,
+        statusCode,
      })
 })
